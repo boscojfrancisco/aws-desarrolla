@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Desarrolla - Provincia de Corrientes</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #152442;
+            --bg-light: #203a68;
+            --text-light: #ffffff;
+            --text-blue: #9eb8e4;
+            --btn-blue: #a1bce6;
+            --btn-hover: #b8cff2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: #f8f9fa; /* Light navbar as per design */
+            color: #333;
+        }
+        
+        .navbar .logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar .logos img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #152442;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2a4878;
+        }
+
+        .btn-nav {
+            background-color: #152442;
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 30px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-nav:hover {
+            background-color: #203a68;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            padding: 80px 5% 40px 5%;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            overflow: hidden;
+        }
+
+        /* Minimalist stars effect */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(1px 1px at 10% 20%, white 100%, transparent),
+                radial-gradient(1px 1px at 30% 50%, rgba(255,255,255,0.8) 100%, transparent),
+                radial-gradient(2px 2px at 80% 10%, rgba(255,255,255,0.5) 100%, transparent),
+                radial-gradient(1.5px 1.5px at 60% 80%, rgba(255,255,255,0.9) 100%, transparent);
+            opacity: 0.5;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 2px;
+            color: var(--text-blue);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 56px;
+            line-height: 1;
+            color: white;
+            margin-bottom: 0px;
+            text-transform: uppercase;
+        }
+
+        .hero-title-large {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 90px;
+            line-height: 1;
+            color: var(--text-blue);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 700px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--btn-blue);
+            color: var(--bg-dark);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--btn-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--btn-hover);
+            border-color: var(--btn-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid var(--btn-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(161, 188, 230, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* --- Content Section (AWS Desarrolla) --- */
+        .content-section {
+            padding: 60px 5%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 36px;
+            color: white;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            color: var(--text-blue);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: left;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--text-blue);
+            margin-bottom: 15px;
+        }
+
+        .card p, .card ul {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #d1d5db;
+        }
+
+        .card ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .card ul li {
+            margin-bottom: 5px;
+        }
+
+        .accordion-container {
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+            margin-bottom: 50px;
+        }
+
+        .accordion {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .accordion-btn {
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-btn::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--text-blue);
+        }
+
+        .accordion-btn.active::after {
+            content: '-';
+        }
+
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+            color: #d1d5db;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .accordion-btn.active + .accordion-content {
+            padding: 20px;
+            max-height: 500px; /* arbitrary max height for animation */
+        }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 5% 20px 5%;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        .footer-col img {
+            max-width: 200px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer-bottom a {
+            color: var(--text-blue);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 40px; }
+            .hero-title-large { font-size: 50px; }
+            .navbar { flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logos">
+            <!-- Simulated Logos with Text for now, or actual links if known -->
+            <img src="https://gobiernoabierto.corrientes.gob.ar/wp-content/uploads/2024/04/gob-abierto-nuevo-logo-02-300x137.png" alt="Gobierno de Corrientes" style="height: 35px; filter: brightness(0); opacity: 0.8;">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; color: #152442; display: flex; align-items: center; gap: 8px;">
+                aws <span style="font-weight: 300;">|</span> entrena <span style="color: #66b2ff; font-size: 10px; text-transform: uppercase;">Argentina</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#programa">Conocé el programa</a>
+            <a href="https://argentina.awsentrena.com/#/libraries?id=772a7a2d-10f3-4e7f-981c-cdd5a981af26" class="btn-nav">Postulate Gratis</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">AWS Entrena Argentina</div>
+            <h1 class="hero-title">Programa</h1>
+            <h2 class="hero-title-large">AWS Desarrolla</h2>
+            <p class="hero-desc">
+                El Gobierno de la Provincia de Corrientes y Amazon Web Services unen fuerzas para impulsar el programa AWS Desarrolla, una iniciativa destinada a fortalecer el ecosistema tecnológico provincial mediante el acceso a infraestructura digital en la nube, capacitación y acompañamiento técnico.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://argentina.awsentrena.com/#/libraries?id=772a7a2d-10f3-4e7f-981c-cdd5a981af26" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Postulate Ahora — Es Gratis
+                </a>
+                <a href="#programa" class="btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    Conocer más
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <section class="content-section" id="programa">
+        <h2 class="section-title">CONOCÉ MÁS SOBRE EL PROGRAMA</h2>
+        <h3 class="section-subtitle">AWS DESARROLLA</h3>
+
+        <div class="info-cards">
+            <div class="card">
+                <h3>¿Qué es AWS Desarrolla?</h3>
+                <p>El programa permite que emprendedores, startups, pymes, instituciones y organismos públicos de Corrientes puedan desarrollar, probar y escalar soluciones utilizando tecnología cloud de nivel internacional, sin necesidad de inversión inicial en equipamiento o servidores.</p>
+            </div>
+            <div class="card">
+                <h3>¿Cómo Participar?</h3>
+                <p>Las personas u organizaciones interesadas podrán postular sus proyectos tecnológicos para acceder a los beneficios del programa AWS Desarrolla. Se priorizan iniciativas que desarrollen productos tecnológicos, utilicen o prevean utilizar AWS y presenten potencial de crecimiento o impacto.</p>
+            </div>
+        </div>
+
+        <div class="accordion-container">
+            <div class="accordion">
+                <button class="accordion-btn">¿Qué permite hacer AWS Desarrolla?</button>
+                <div class="accordion-content">
+                    <p>A través de créditos promocionales y servicios AWS, los proyectos pueden:</p>
+                    <ul>
+                        <li>Desarrollar aplicaciones web y móviles</li>
+                        <li>Crear plataformas y servicios digitales</li>
+                        <li>Implementar bases de datos y almacenamiento en la nube</li>
+                        <li>Incorporar analítica de datos e inteligencia artificial</li>
+                        <li>Escalar soluciones tecnológicas según demanda</li>
+                        <li>Desarrollar prototipos o productos mínimos viables (MVP)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn">Objetivos del programa</button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Facilitar el acceso a infraestructura tecnológica de primer nivel.</li>
+                        <li>Fomentar la innovación y el desarrollo de nuevos productos y servicios.</li>
+                        <li>Impulsar el crecimiento y la competitividad del ecosistema tecnológico local.</li>
+                        <li>Brindar capacitación y acompañamiento para optimizar el uso de la nube.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn">¿Cómo utilizar los créditos AWS?</button>
+                <div class="accordion-content">
+                    <p>Los créditos promocionales de AWS se aplican a la factura mensual de AWS del proyecto para cubrir el costo de los servicios elegibles. Los beneficiarios recibirán asistencia técnica para la activación y optimización de los créditos asignados.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn">¿A quién está dirigido?</button>
+                <div class="accordion-content">
+                    <p>Emprendedores tecnológicos, startups en etapa temprana o de crecimiento, pequeñas y medianas empresas (PyMEs) del sector TIC, instituciones educativas y centros de investigación, y organismos del sector público de la Provincia de Corrientes.</p>
+                </div>
+            </div>
+            
+            <div class="accordion">
+                <button class="accordion-btn">Requisitos técnicos</button>
+                <div class="accordion-content">
+                    <p>Contar con un proyecto tecnológico definido, tener o crear una cuenta activa de Amazon Web Services, y completar el formulario de postulación detallando el caso de uso y la arquitectura propuesta.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://argentina.awsentrena.com/#/libraries?id=772a7a2d-10f3-4e7f-981c-cdd5a981af26" class="btn-primary" style="margin-top: 20px;">
+            Ver toda la información y postularse <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; color: white; margin-bottom: 10px;">
+                    aws <span style="font-weight: 300;">|</span> entrena <span style="color: var(--text-blue); font-size: 14px;">ARGENTINA</span>
+                </div>
+                <p>Programa AWS Entrena Argentina y Desarrolla.<br>Gobierno de la Provincia de Corrientes.</p>
+            </div>
+            <div class="footer-col">
+                <h4>GOBIERNO DE CORRIENTES</h4>
+                <ul>
+                    <li><a href="https://corrientes.gob.ar">corrientes.gob.ar</a></li>
+                    <li><a href="https://consultatramites.corrientes.gob.ar/">Trámites Ciudadanos</a></li>
+                    <li><a href="https://gobiernodigital.corrientes.gob.ar/login">Tu Gobierno Digital</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>UBICACIÓN</h4>
+                <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Corrientes Capital, Argentina</p>
+                <div style="margin-top: 20px; padding: 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: inline-block;">
+                    <strong>aws</strong><br>
+                    <span style="font-size: 12px; color: #9ca3af;">En alianza con Amazon Web Services</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Gobierno de la Provincia de Corrientes · Todos los derechos reservados</div>
+            <div>Sitio en permanente actualización. Si encontrás un error, <a href="https://gobiernoabierto.corrientes.gob.ar/sugerencias/">contactanos.</a></div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Accordion Logic
+        const accordions = document.querySelectorAll(".accordion-btn");
+        accordions.forEach(acc => {
+            acc.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    content.style.padding = "0 20px";
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 40 + "px"; // 40 is padding
+                    content.style.padding = "20px";
+                } 
+            });
+        });
+    </script>
+</body>
+</html>
